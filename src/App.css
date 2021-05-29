@@ -4,15 +4,14 @@
     box-sizing: border-box;
 }
 
-
-/* .main-header {
+.main-header {
     position: relative;
 }
 
 .main-header h1 {
     position: absolute;
     top: 5px;
-    left: 20em;
+    left: 18.8em;
     color: white;
 }
 
@@ -20,7 +19,7 @@
     position: absolute;
     top: 50px;
     left: 75px;
-} */
+}
 
 html,
 body {
@@ -63,6 +62,7 @@ header {
 }
 
 .content {
+    margin-top: 200px;
     display: grid;
     grid-template-columns: repeat(5, auto);
 }
