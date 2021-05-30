@@ -17,7 +17,7 @@ export default function Movie({ match, history }) {
     req(movieId)
   }, []);
 
-  function goBack (){
+  function goBack() {
     history.push('/')
   }
 
@@ -36,17 +36,20 @@ export default function Movie({ match, history }) {
       })
   }
   if (details == undefined) {
-    return <Loading/>
+    return <Loading />
   }
   return (
     <div className="movie-page-div">
-      <button onClick = {goBack}>Go back</button>
+      <button onClick={goBack}>Go back</button>
       <div className="movie-details">
         <img src={GET_IMAGE(details.poster_path)} alt="1" />
         <h2 className='movieName'>{details.title} : {details.release_date}</h2>
         <p>{details.overview}</p>
+        <div className='zhanri-div'>
+          <p className='zhanr'>Genre: {details.genres[0].name}</p>
+        </div>
       </div>
-      <h1 className = 'credits'>Credits</h1>
+      <h1 className='credits'>Credits</h1>
       <div className="movie-credits">
         {
 
@@ -65,7 +68,7 @@ export default function Movie({ match, history }) {
             })
         }
       </div>
-      <h1 className = 'treiler'>Treiler</h1>
+      <h1 className='treiler'>Treiler</h1>
       <div className="movie-videos-div">
         {
           videos.filter((video) => video.key !== null)
