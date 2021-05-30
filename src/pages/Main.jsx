@@ -1,10 +1,11 @@
-import React  from "react";
+import React from "react";
 import SearchInput from "../components/SearchInput";
 import { request } from "../providers/v.lib";
 import { GET_MOVIES } from "../providers/const";
 import MovieInfo from "../components/MovieInfo";
 
 import { useState } from "react";
+import Loading from "../Loading";
 
 function Main() {
   const [movies, setMovie] = useState([]);
@@ -21,7 +22,7 @@ function Main() {
 
   return (
     <div className="mainDiv">
-      <header className = 'main-header'>
+      <header className='main-header'>
         <h1>Home page</h1>
 
         <div className="searchBar">
@@ -29,11 +30,12 @@ function Main() {
         </div>
       </header>
       <div className="content">
-        {movies
-          .filter((movie) => movie.poster_path !== null)
-          .map((movie, i) => (
-            <MovieInfo key={i} movie={movie} />
-          ))}
+        {
+          movies.filter((movie) => movie.poster_path !== null)
+            .map((movie, i) => (
+              <MovieInfo key={i} movie={movie} />
+            ))
+        }
       </div>
     </div>
   );

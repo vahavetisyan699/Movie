@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Loading";
 import {
   GET_MOVIE_CREDITS,
   GET_MOVIE_DEATAILS,
@@ -35,7 +36,7 @@ export default function Movie({ match, history }) {
       })
   }
   if (details == undefined) {
-    return <h5 style={{ color: 'white' }}>Loading...</h5>
+    return <Loading/>
   }
   return (
     <div className="movie-page-div">
