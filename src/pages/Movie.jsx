@@ -21,6 +21,10 @@ export default function Movie({ match, history }) {
     history.push('/')
   }
 
+  function watchTreiler() {
+    history.push(`/movie/${movieId}/watchTrailer`)
+  }
+
   function req(movieId) {
     request(GET_MOVIE_DEATAILS(movieId), "GET")
       .then((result) => {
@@ -39,48 +43,54 @@ export default function Movie({ match, history }) {
     return <Loading />
   }
   return (
-    <div className="movie-page-div">
-      <button onClick={goBack}>Go back</button>
-      <div className="movie-details">
-        <img src={GET_IMAGE(details.poster_path)} alt="1" />
-        <h2 className='movieName'>{details.title} : {details.release_date}</h2>
-        <p>{details.overview}</p>
-        <div className='zhanri-div'>
-          <p className='zhanr'>Genre: {details.genres[0].name}</p>
-        </div>
-      </div>
-      <h1 className='credits'>Credits</h1>
-      <div className="movie-credits">
-        {
+    <>
+      <header className = 'movie-page-header'>
+        <button onClick={goBack}>Go back</button>
 
-          credits.filter((movie) => movie.profile_path !== null)
-            .map((el, i) => {
-              return (
-                <>
-                  <div className='movie-credits-div'>
-                    <div>
-                      <img src={GET_IMAGE(el.profile_path)} alt="" />
-                      <p className='credit-name'>{el.name}</p>
+        <h1 style={{ color: 'white'}}>{details.original_title}</h1>
+      </header>
+      <div className="movie-page-div">
+        <div className="movie-details">
+          <img src={GET_IMAGE(details.poster_path)} alt="1" />
+          <h2 className='movieName'>{details.title} : {details.release_date}</h2>
+          <p>{details.overview}</p>
+          <div className='zhanri-div'>
+            <p className='zhanr'>Genre: {details.genres[0].name}</p>
+          </div>
+        </div>
+        <h1 className='credits'>Credits</h1>
+        <div className="movie-credits">
+          {
+
+            credits.filter((movie) => movie.profile_path !== null)
+              .map((el, i) => {
+                return (
+                  <>
+                    <div className='movie-credits-div'>
+                      <div>
+                        <img src={GET_IMAGE(el.profile_path)} alt="" />
+                        <p className='credit-name'>{el.name}</p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              )
-            })
-        }
-      </div>
-      <h1 className='treiler'>Treiler</h1>
-      <div className="movie-videos-div">
+                  </>
+                )
+              })
+          }
+        </div>
+
         {
-          videos.filter((video) => video.key !== null)
-            .map((el, i) => {
-              return (
-                <>
-                  <iframe key={i} allowFullScreen src={GET_MOVIE_VIDEOS_LINK(el.key)} frameborder="0"></iframe>
-                </>
-              )
-            })
+          (
+            videos.length > 0 ?
+              <>
+                <h1 className='treiler'>Treiler</h1>
+                <div className="movie-videos-div">
+                  <button onClick={watchTreiler}>Watch treiler</button>
+                </div>
+              </> : null
+          )
         }
+
       </div>
-    </div>
+    </>
   )
 }

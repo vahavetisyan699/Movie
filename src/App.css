@@ -4,6 +4,32 @@
     box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+    width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(10, 115, 163);
+    outline: unset;
+}
+
+.movie-credits::-webkit-scrollbar {
+    width: 10px;
+}
+
+.movie-credits::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.movie-credits::-webkit-scrollbar-thumb {
+    background-color: rgb(10, 115, 163);
+    outline: unset;
+}
+
 .main-header {
     position: relative;
 }
@@ -62,9 +88,11 @@ header {
 }
 
 .content {
+    box-shadow: 20px 7px 30px 0px rgb(0 0 0);
     margin-top: 200px;
     display: grid;
     grid-template-columns: repeat(5, auto);
+    overflow: auto;
 }
 
 .movieCard {
@@ -79,7 +107,7 @@ header {
 
 .movieNameP {
     margin-top: -4px;
-    width: 190px;
+    width: 180px;
     height: auto;
     background-color: rgb(95, 95, 95);
     color: white;
@@ -87,7 +115,8 @@ header {
 }
 
 .movieImg {
-    width: 190px;
+    width: 180px;
+    height: 250px;
 }
 
 .movie-details {
@@ -152,6 +181,7 @@ header {
 
 .movie-credits img {
     width: 170px;
+    border-radius: 10px;
 }
 
 .movie-credits-div {
@@ -164,6 +194,8 @@ header {
 }
 
 .credit-name {
+    border-radius: 10px;
+    padding: 5px;
     color: white;
     margin-top: -4px;
     width: 170px;
@@ -197,4 +229,44 @@ header {
     margin-left: -210px;
     border-radius: 7px;
     padding: 7px;
+}
+
+.movie-trailer-div {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.movie-page-div {
+    margin-top: 50px;
+}
+
+.movie-trailer-div iframe {
+    width: 800px;
+    height: 500px;
+}
+
+.movie-page-header {
+    position: relative;
+}
+
+.movie-page-header * {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.movie-page-header h1 {
+    left: 50%;
+    top: 10px;
+}
+
+.movie-page-header button {
+    top: 10px;
+    left: 5px;
 }
